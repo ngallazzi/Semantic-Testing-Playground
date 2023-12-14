@@ -17,17 +17,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SemanticsTestingPlaygroundTheme {
-                var status: SwitchStatus by remember {
-                    mutableStateOf(SwitchStatus.OFF)
-                }
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    SwitchLayout(status = status, onButtonONClick = {
-                        status = SwitchStatus.ON
-                    }, onButtonOFFClick = {
-                        status = SwitchStatus.OFF
-                    })
+                    SwitchLayout()
                 }
             }
         }

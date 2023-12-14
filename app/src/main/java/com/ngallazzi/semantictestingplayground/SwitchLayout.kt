@@ -11,6 +11,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -23,13 +27,11 @@ import androidx.compose.ui.unit.dp
 import com.ngallazzi.semantictestingplayground.ui.theme.SemanticsTestingPlaygroundTheme
 
 @Composable
-fun SwitchLayout(
-    status: SwitchStatus,
-    onButtonONClick: () -> Unit,
-    onButtonOFFClick: () -> Unit
-) {
+fun SwitchLayout() {
     val context = LocalContext.current
-
+    var status: SwitchStatus by remember {
+        mutableStateOf(SwitchStatus.OFF)
+    }
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(32.dp)) {
         Image(
             modifier = Modifier
@@ -49,7 +51,7 @@ fun SwitchLayout(
         Row {
             Button(
                 enabled = status == SwitchStatus.ON,
-                onClick = onButtonOFFClick,
+                onClick = { status = SwitchStatus.OFF },
                 modifier = Modifier.semantics {
                     contentDescription =
                         context.getString(R.string.switch_state_description, SwitchStatus.OFF.name)
@@ -59,7 +61,7 @@ fun SwitchLayout(
             Spacer(modifier = Modifier.width(32.dp))
             Button(
                 enabled = status == SwitchStatus.OFF,
-                onClick = onButtonONClick,
+                onClick = { status = SwitchStatus.ON },
                 modifier = Modifier.semantics {
                     contentDescription =
                         context.getString(R.string.switch_state_description, SwitchStatus.ON.name)
@@ -72,16 +74,8 @@ fun SwitchLayout(
 
 @Composable
 @Preview
-private fun SwitchLayoutOff() {
+private fun SwitchLayoutPreview() {
     SemanticsTestingPlaygroundTheme {
-        SwitchLayout(status = SwitchStatus.OFF, onButtonONClick = {}, onButtonOFFClick = {})
-    }
-}
-
-@Composable
-@Preview
-private fun SwitchLayoutOn() {
-    SemanticsTestingPlaygroundTheme {
-        SwitchLayout(status = SwitchStatus.ON, onButtonONClick = {}, onButtonOFFClick = {})
+        SwitchLayout()
     }
 }
