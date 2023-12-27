@@ -45,7 +45,7 @@ fun SwitchLayout() {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text("Status is: ${status.name}", modifier = Modifier.semantics {
-            contentDescription = context.getString(R.string.status_description)
+            contentDescription = context.getString(R.string.current_status_description)
         }, style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(16.dp))
         Row {
@@ -54,7 +54,7 @@ fun SwitchLayout() {
                 onClick = { status = SwitchStatus.OFF },
                 modifier = Modifier.semantics {
                     contentDescription =
-                        context.getString(R.string.switch_state_description, SwitchStatus.OFF.name)
+                        context.getString(R.string.off_button_description)
                 }) {
                 Text(SwitchStatus.OFF.name)
             }
@@ -64,7 +64,7 @@ fun SwitchLayout() {
                 onClick = { status = SwitchStatus.ON },
                 modifier = Modifier.semantics {
                     contentDescription =
-                        context.getString(R.string.switch_state_description, SwitchStatus.ON.name)
+                        context.getString(R.string.on_button_description)
                 }) {
                 Text(SwitchStatus.ON.name)
             }

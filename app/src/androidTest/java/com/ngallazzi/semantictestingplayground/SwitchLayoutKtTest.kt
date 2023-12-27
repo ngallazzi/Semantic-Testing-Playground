@@ -22,12 +22,11 @@ class SwitchLayoutKtTest {
                 SwitchLayout()
             }
         }
+        Thread.sleep(2000)
         composeTestRule.onNodeWithContentDescription(
-            composeTestRule.activity.getString(
-                R.string.switch_state_description, SwitchStatus.ON.name
-            )
+            composeTestRule.activity.getString(R.string.on_button_description)
         ).performClick()
-        composeTestRule.onNodeWithContentDescription(composeTestRule.activity.getString(R.string.status_description))
+        composeTestRule.onNodeWithContentDescription(composeTestRule.activity.getString(R.string.current_status_description))
             .assertTextEquals("Status is: ${SwitchStatus.ON.name}")
     }
 
@@ -39,19 +38,19 @@ class SwitchLayoutKtTest {
                 SwitchLayout()
             }
         }
-        // Switch state to on to enable off button
+        // Click on on button to to enable off button
         composeTestRule.onNodeWithContentDescription(
             composeTestRule.activity.getString(
-                R.string.switch_state_description, SwitchStatus.ON.name
+                R.string.on_button_description
             )
         ).performClick()
+        Thread.sleep(2000)
         // Click off button
         composeTestRule.onNodeWithContentDescription(
-            composeTestRule.activity.getString(
-                R.string.switch_state_description, SwitchStatus.OFF.name
-            )
+            composeTestRule.activity.getString(R.string.off_button_description)
         ).performClick()
-        composeTestRule.onNodeWithContentDescription(composeTestRule.activity.getString(R.string.status_description))
+        composeTestRule.onNodeWithContentDescription(composeTestRule.activity.getString(R.string.current_status_description))
             .assertTextEquals("Status is: ${SwitchStatus.OFF.name}")
+
     }
 }
