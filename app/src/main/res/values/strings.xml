@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Semantics Testing Playground</string>
-    <string name="pacman_lamp_image_description">Pacman lamp image %1$s</string>
+    <string name="pacman_lamp_image_description">Pacman lamp image</string>
     <string name="on_button_description">On button</string>
     <string name="off_button_description">Off button</string>
     <string name="current_status_description">Status description</string>

@@ -38,10 +38,11 @@ fun SwitchLayout() {
                 .width(196.dp)
                 .semantics {
                     contentDescription =
-                        context.getString(R.string.pacman_lamp_image_description, status.name)
+                        context.getString(R.string.pacman_lamp_image_description)
+                    drawableId = status.imageRes
                 },
             painter = painterResource(id = status.imageRes),
-            contentDescription = stringResource(R.string.pacman_lamp_image_description, status.name)
+            contentDescription = stringResource(R.string.pacman_lamp_image_description)
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text("Status is: ${status.name}", modifier = Modifier.semantics {
