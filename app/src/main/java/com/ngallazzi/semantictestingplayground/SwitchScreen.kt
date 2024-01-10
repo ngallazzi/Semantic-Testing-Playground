@@ -76,10 +76,16 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
             }
             Spacer(Modifier.height(48.dp))
         }
-        Column {
-            Text(modifier = Modifier.clickable {
-                onGoToCreditsClick.invoke()
-            }, text = "Credits", style = MaterialTheme.typography.bodyLarge)
+        Column(modifier = Modifier.semantics(mergeDescendants = true) {
+            contentDescription = context.getString(R.string.credits_and_copyright_section_desc)
+        }) {
+            Text(
+                modifier = Modifier.clickable {
+                    onGoToCreditsClick.invoke()
+                },
+                text = stringResource(id = R.string.credits),
+                style = MaterialTheme.typography.bodyLarge
+            )
             Spacer(Modifier.height(16.dp))
         }
     }
