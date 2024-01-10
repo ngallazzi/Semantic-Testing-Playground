@@ -20,15 +20,15 @@ class MainActivity : ComponentActivity() {
                 Scaffold(content = {
                     NavHost(
                         navController = navController,
-                        startDestination = "SwitchScreen",
+                        startDestination = Screens.SWITCH.destination,
                         modifier = Modifier.padding(it)
                     ) {
-                        composable("SwitchScreen") {
+                        composable(Screens.SWITCH.destination) {
                             SwitchScreen(onGoToCreditsClick = {
-                                navController.navigate("CreditsScreen")
+                                navController.navigate(Screens.CREDITS.destination)
                             })
                         }
-                        composable("CreditsScreen") {
+                        composable(Screens.CREDITS.destination) {
                             CreditsScreen(onBackPressed = {
                                 navController.popBackStack()
                             })
