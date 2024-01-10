@@ -12,7 +12,8 @@ import org.junit.Rule
 import org.junit.Test
 
 
-class SwitchLayoutKtTest {
+class SwitchScreenKtTest {
+    // Create test rule, we need android context so we use createAndroidComposeRule factory method
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
@@ -25,11 +26,13 @@ class SwitchLayoutKtTest {
         // Start the app
         composeTestRule.setContent {
             SemanticsTestingPlaygroundTheme {
-                SwitchLayout()
+                SwitchScreen(onGoToCreditsClick = {})
             }
         }
         Thread.sleep(2000)
+        // Perform click action on "on button", using its semantics matcher
         composeTestRule.onNodeWithContentDescription(onButtonNodeIdentifier).performClick()
+        // Assert status text switches to "on status"
         composeTestRule.onNodeWithContentDescription(currentStatusNodeIdentifier)
             .assertTextEquals("Status is: ${SwitchStatus.ON.name}")
         // Assert image is "on" image
@@ -48,7 +51,7 @@ class SwitchLayoutKtTest {
         // Start the app
         composeTestRule.setContent {
             SemanticsTestingPlaygroundTheme {
-                SwitchLayout()
+                SwitchScreen(onGoToCreditsClick = {})
             }
         }
         // Click on on button to to enable off button
