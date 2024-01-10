@@ -6,7 +6,9 @@ import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.printToLog
 import com.ngallazzi.semantictestingplayground.ui.theme.SemanticsTestingPlaygroundTheme
 import org.junit.Rule
 import org.junit.Test
@@ -29,6 +31,8 @@ class SwitchScreenKtTest {
                 SwitchScreen(onGoToCreditsClick = {})
             }
         }
+        // Prints semantics tree
+        composeTestRule.onRoot().printToLog("SwitchScreenTests")
         Thread.sleep(2000)
         // Perform click action on "on button", using its semantics matcher
         composeTestRule.onNodeWithContentDescription(onButtonNodeIdentifier).performClick()
@@ -54,6 +58,8 @@ class SwitchScreenKtTest {
                 SwitchScreen(onGoToCreditsClick = {})
             }
         }
+        // Prints semantics tree
+        composeTestRule.onRoot().printToLog("SwitchScreenTests")
         // Click on on button to to enable off button
         composeTestRule.onNodeWithContentDescription(onButtonNodeIdentifier).performClick()
         Thread.sleep(2000)
