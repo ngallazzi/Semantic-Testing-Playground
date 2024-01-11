@@ -9,7 +9,10 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.printToLog
+import com.ngallazzi.semantictestingplayground.ui.screens.SwitchScreen
 import com.ngallazzi.semantictestingplayground.ui.theme.SemanticsTestingPlaygroundTheme
+import com.ngallazzi.semantictestingplayground.ui.theme.atoms.CreditsBackgroundColor
+import com.ngallazzi.semantictestingplayground.ui.theme.organisms.CreditsLayout
 import org.junit.Rule
 import org.junit.Test
 
@@ -70,6 +73,23 @@ class SwitchScreenKtTest {
         // Assert image is "off" image
         composeTestRule.onNodeWithContentDescription(lampImageNodeIdentifier).assert(
             SemanticsMatcher.expectValue(DrawableIdSemanticsProperty, SwitchStatus.OFF.imageRes)
+        )
+    }
+
+    @Test
+    fun testCreditsLayout_backgroundSet() {
+        val context = composeTestRule.activity
+        val creditsLayoutNodeIdentifier =
+            context.getString(R.string.credits_and_copyright_section_desc)
+        composeTestRule.setContent {
+            SemanticsTestingPlaygroundTheme {
+                CreditsLayout(onClick = {})
+            }
+        }
+        composeTestRule.onNodeWithContentDescription(creditsLayoutNodeIdentifier).assert(
+            SemanticsMatcher.expectValue(
+                BackgroundColorSemanticsProperty, CreditsBackgroundColor
+            )
         )
     }
 }

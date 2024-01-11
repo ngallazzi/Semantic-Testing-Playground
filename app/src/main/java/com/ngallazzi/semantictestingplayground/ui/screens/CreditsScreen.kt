@@ -1,4 +1,4 @@
-package com.ngallazzi.semantictestingplayground
+package com.ngallazzi.semantictestingplayground.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +18,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.ngallazzi.semantictestingplayground.ui.theme.HyperlinkText
+import com.ngallazzi.semantictestingplayground.R
+import com.ngallazzi.semantictestingplayground.ui.theme.molecules.HyperlinkText
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

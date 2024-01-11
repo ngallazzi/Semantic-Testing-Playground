@@ -11,4 +11,5 @@
     <string name="android_documentation_string_placeholder">android documentation</string>
     <string name="thomas_kunnet_book_placeholder">book</string>
     <string name="credits_and_copyright_section_desc">Credits and copyright section</string>
+    <string name="go_to_credits">Go to credits</string>
 </resources>

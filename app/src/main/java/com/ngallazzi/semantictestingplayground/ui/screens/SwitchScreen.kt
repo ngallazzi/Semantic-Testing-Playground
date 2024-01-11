@@ -1,7 +1,6 @@
-package com.ngallazzi.semantictestingplayground
+package com.ngallazzi.semantictestingplayground.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,7 +25,11 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ngallazzi.semantictestingplayground.R
+import com.ngallazzi.semantictestingplayground.SwitchStatus
+import com.ngallazzi.semantictestingplayground.drawableId
 import com.ngallazzi.semantictestingplayground.ui.theme.SemanticsTestingPlaygroundTheme
+import com.ngallazzi.semantictestingplayground.ui.theme.organisms.CreditsLayout
 
 @Composable
 fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
@@ -37,10 +40,14 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(32.dp)
+            .padding(top = 32.dp)
             .fillMaxSize()
     ) {
-        Column(modifier = Modifier.weight(1f)) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 32.dp)
+        ) {
             Image(
                 modifier = Modifier
                     .width(196.dp)
@@ -76,18 +83,7 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
             }
             Spacer(Modifier.height(48.dp))
         }
-        Column(modifier = Modifier.semantics(mergeDescendants = true) {
-            contentDescription = context.getString(R.string.credits_and_copyright_section_desc)
-        }) {
-            Text(
-                modifier = Modifier.clickable {
-                    onGoToCreditsClick.invoke()
-                },
-                text = stringResource(id = R.string.credits),
-                style = MaterialTheme.typography.bodyLarge
-            )
-            Spacer(Modifier.height(16.dp))
-        }
+        CreditsLayout(onClick = onGoToCreditsClick)
     }
 }
 

@@ -1,4 +1,4 @@
-package com.ngallazzi.semantictestingplayground.ui.theme
+package com.ngallazzi.semantictestingplayground.ui.theme.molecules
 
 import android.content.Intent
 import android.net.Uri
