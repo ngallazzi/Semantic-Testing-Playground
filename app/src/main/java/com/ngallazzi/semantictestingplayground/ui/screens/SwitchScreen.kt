@@ -66,6 +66,7 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
             }, style = MaterialTheme.typography.headlineMedium)
             Spacer(modifier = Modifier.height(16.dp))
             Row {
+                // OFF button
                 Button(enabled = status == SwitchStatus.ON,
                     onClick = { status = SwitchStatus.OFF },
                     modifier = Modifier.semantics {
@@ -74,6 +75,7 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
                     Text(SwitchStatus.OFF.name)
                 }
                 Spacer(modifier = Modifier.width(32.dp))
+                // ON Button
                 Button(enabled = status == SwitchStatus.OFF,
                     onClick = { status = SwitchStatus.ON },
                     modifier = Modifier.semantics {
