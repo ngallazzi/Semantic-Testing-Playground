@@ -27,8 +27,8 @@ fun CreditsScreen(onBackPressed: () -> Unit) {
     val context = LocalContext.current
     Scaffold(topBar = {
         TopAppBar(modifier = Modifier.semantics {
-            contentDescription = context.getString(R.string.credits)
-        }, title = { Text(text = context.getString(R.string.credits)) }, navigationIcon = {
+            contentDescription = context.getString(R.string.credits_screen_description)
+        }, title = { Text(text = context.getString(R.string.credits_screen_description)) }, navigationIcon = {
             IconButton(
                 onClick = onBackPressed
             ) {

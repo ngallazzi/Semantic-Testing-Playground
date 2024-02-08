@@ -41,7 +41,12 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .padding(top = 32.dp)
-            .semantics { contentDescription = context.getString(R.string.switch_screen) }
+            .semantics {
+                contentDescription =
+                    context.getString(
+                        R.string.switch_screen_description
+                    )
+            }
             .fillMaxSize()
     ) {
         Column(

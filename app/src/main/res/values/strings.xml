@@ -4,7 +4,7 @@
     <string name="on_button_description">On button</string>
     <string name="off_button_description">Off button</string>
     <string name="current_status_description">Status description</string>
-    <string name="credits">Credits</string>
+    <string name="credits_screen_description">Credits</string>
     <string name="back_to_switch_screen">Back to Switch Screen</string>
     <string name="navigate_credits_link">Navigate credits link</string>
     <string name="thanks_to_credits">Thanks to android documentation resource and to Thomas Künneth for his great book Android UI Development with Jetpack Compose</string>
@@ -12,5 +12,5 @@
     <string name="thomas_kunnet_book_placeholder">book</string>
     <string name="credits_and_copyright_section_desc">Credits and copyright section</string>
     <string name="go_to_credits">Go to credits</string>
-    <string name="switch_screen">Switch Screen</string>
+    <string name="switch_screen_description">Switch Screen</string>
 </resources>
