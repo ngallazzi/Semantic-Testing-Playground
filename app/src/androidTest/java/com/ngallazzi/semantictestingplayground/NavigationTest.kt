@@ -5,6 +5,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.ngallazzi.semantictestingplayground.ui.navigation.AppNavHost
@@ -28,12 +29,20 @@ class NavigationTest {
         }
     }
 
-    // Unit test
     @Test
-    fun appNavHost_verifyStartDestination() {
+    fun verifyNavigationToCreditsScreen() {
         val context = composeTestRule.activity
+        // Verify initial screen is "switch" screen
         composeTestRule
-            .onNodeWithContentDescription(context.getString(R.string.switch_screen))
+            .onNodeWithContentDescription(context.getString(R.string.switch_screen_description))
+            .assertIsDisplayed()
+        // Perform click on "credits" button
+        composeTestRule
+            .onNodeWithContentDescription(context.getString(R.string.go_to_credits))
+            .performClick()
+        // Verify app has switched to "credits" screen
+        composeTestRule
+            .onNodeWithContentDescription(context.getString(R.string.credits_screen_description))
             .assertIsDisplayed()
     }
 }

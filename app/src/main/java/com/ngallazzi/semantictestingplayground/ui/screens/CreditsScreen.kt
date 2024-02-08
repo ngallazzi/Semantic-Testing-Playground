@@ -23,12 +23,10 @@ import com.ngallazzi.semantictestingplayground.ui.theme.molecules.HyperlinkText
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreditsScreen(onBackPressed: () -> Unit) {
+fun CreditsScreen(modifier: Modifier = Modifier, onBackPressed: () -> Unit) {
     val context = LocalContext.current
     Scaffold(topBar = {
-        TopAppBar(modifier = Modifier.semantics {
-            contentDescription = context.getString(R.string.credits)
-        }, title = { Text(text = context.getString(R.string.credits)) }, navigationIcon = {
+        TopAppBar(modifier = modifier, title = { Text(text = context.getString(R.string.credits_screen_description)) }, navigationIcon = {
             IconButton(
                 onClick = onBackPressed
             ) {

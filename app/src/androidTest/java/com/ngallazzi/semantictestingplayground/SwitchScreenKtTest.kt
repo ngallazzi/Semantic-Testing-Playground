@@ -36,7 +36,7 @@ class SwitchScreenKtTest {
         }
         // Prints semantics tree
         composeTestRule.onRoot().printToLog("SwitchScreenTests")
-        Thread.sleep(2000)
+        Thread.sleep(5000)
         // Perform click action on "on button", using its semantics matcher
         composeTestRule.onNodeWithContentDescription(onButtonNodeIdentifier).performClick()
         // Assert status text switches to "on status"
@@ -65,7 +65,7 @@ class SwitchScreenKtTest {
         composeTestRule.onRoot().printToLog("SwitchScreenTests")
         // Click on on button to to enable off button
         composeTestRule.onNodeWithContentDescription(onButtonNodeIdentifier).performClick()
-        Thread.sleep(2000)
+        Thread.sleep(5000)
         // Click off button
         composeTestRule.onNodeWithContentDescription(offButtonNodeIdentifier).performClick()
         composeTestRule.onNodeWithContentDescription(currentStatusNodeIdentifier)

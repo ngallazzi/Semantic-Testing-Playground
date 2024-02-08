@@ -35,8 +35,10 @@ fun CreditsLayout(modifier: Modifier = Modifier, onClick: () -> Unit) {
             .background(
                 color = CreditsBackgroundColor
             )
+            .clickable(onClickLabel = context.getString(R.string.go_to_credits),
+                onClick = { onClick.invoke() })
             .semantics(mergeDescendants = true) {
-                contentDescription = context.getString(R.string.credits_and_copyright_section_desc)
+                contentDescription = context.getString(R.string.go_to_credits)
                 backgroundColor = CreditsBackgroundColor
             }, verticalAlignment = Alignment.CenterVertically
     ) {
@@ -49,10 +51,8 @@ fun CreditsLayout(modifier: Modifier = Modifier, onClick: () -> Unit) {
         Text(
             modifier = Modifier
                 .padding(vertical = 8.dp)
-                .clickable(onClickLabel = context.getString(R.string.go_to_credits),
-                    onClick = { onClick.invoke() })
                 .semantics { backgroundColor = textBackgroundColor },
-            text = stringResource(id = R.string.credits),
+            text = stringResource(id = R.string.credits_screen_description),
             style = MaterialTheme.typography.bodyLarge.copy(color = textBackgroundColor)
         )
     }
