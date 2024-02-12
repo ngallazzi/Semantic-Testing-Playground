@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ngallazzi.semantictestingplayground.R
@@ -32,11 +33,17 @@ import com.ngallazzi.semantictestingplayground.drawableId
 import com.ngallazzi.semantictestingplayground.ui.theme.SemanticsTestingPlaygroundTheme
 import com.ngallazzi.semantictestingplayground.ui.theme.organisms.CreditsLayout
 
+const val IMAGE_TEST_TAG = "status_image"
+
 @Composable
-fun SwitchScreen(modifier: Modifier = Modifier, onGoToCreditsClick: () -> Unit) {
+fun SwitchScreen(
+    modifier: Modifier = Modifier,
+    initialState: SwitchStatus = SwitchStatus.OFF,
+    onGoToCreditsClick: () -> Unit
+) {
     val context = LocalContext.current
     var status: SwitchStatus by remember {
-        mutableStateOf(SwitchStatus.OFF)
+        mutableStateOf(initialState)
     }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,12 +61,13 @@ fun SwitchScreen(modifier: Modifier = Modifier, onGoToCreditsClick: () -> Unit) 
                     .width(196.dp)
                     .semantics {
                         drawableId = status.imageRes
+                        testTag = IMAGE_TEST_TAG
                     },
                 painter = painterResource(id = status.imageRes),
                 contentDescription = stringResource(
                     R.string.pacman_lamp_image_description,
                     status.name
-                )
+                ),
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text("Status is: ${status.name}", modifier = Modifier.semantics {
