@@ -1,5 +1,5 @@
 # Semantic testing playground
-A simple playground do try semantic testing for compose layouts
+A simple playground to try semantic testing for compose layouts
 
 Medium article here: https://nicola-gallazzi-dev.medium.com/pragmatic-ui-testing-in-jetpack-compose-7e4c39780f5b
 
