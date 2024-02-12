@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,21 +33,15 @@ import com.ngallazzi.semantictestingplayground.ui.theme.SemanticsTestingPlaygrou
 import com.ngallazzi.semantictestingplayground.ui.theme.organisms.CreditsLayout
 
 @Composable
-fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
+fun SwitchScreen(modifier: Modifier = Modifier, onGoToCreditsClick: () -> Unit) {
     val context = LocalContext.current
     var status: SwitchStatus by remember {
         mutableStateOf(SwitchStatus.OFF)
     }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
+        modifier = modifier
             .padding(top = 32.dp)
-            .semantics {
-                contentDescription =
-                    context.getString(
-                        R.string.switch_screen_description
-                    )
-            }
             .fillMaxSize()
     ) {
         Column(
@@ -58,12 +53,13 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
                 modifier = Modifier
                     .width(196.dp)
                     .semantics {
-                        contentDescription =
-                            context.getString(R.string.pacman_lamp_image_description)
                         drawableId = status.imageRes
                     },
                 painter = painterResource(id = status.imageRes),
-                contentDescription = stringResource(R.string.pacman_lamp_image_description)
+                contentDescription = stringResource(
+                    R.string.pacman_lamp_image_description,
+                    status.name
+                )
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text("Status is: ${status.name}", modifier = Modifier.semantics {
@@ -74,19 +70,19 @@ fun SwitchScreen(onGoToCreditsClick: () -> Unit) {
                 // OFF button
                 Button(enabled = status == SwitchStatus.ON,
                     onClick = { status = SwitchStatus.OFF },
-                    modifier = Modifier.semantics {
+                    modifier = Modifier.semantics(mergeDescendants = true) {
                         contentDescription = context.getString(R.string.off_button_description)
                     }) {
-                    Text(SwitchStatus.OFF.name)
+                    Text(SwitchStatus.OFF.name, modifier = Modifier.clearAndSetSemantics { })
                 }
                 Spacer(modifier = Modifier.width(32.dp))
                 // ON Button
                 Button(enabled = status == SwitchStatus.OFF,
                     onClick = { status = SwitchStatus.ON },
-                    modifier = Modifier.semantics {
+                    modifier = Modifier.semantics(mergeDescendants = true) {
                         contentDescription = context.getString(R.string.on_button_description)
                     }) {
-                    Text(SwitchStatus.ON.name)
+                    Text(SwitchStatus.ON.name, modifier = Modifier.clearAndSetSemantics { })
                 }
             }
             Spacer(Modifier.height(48.dp))
