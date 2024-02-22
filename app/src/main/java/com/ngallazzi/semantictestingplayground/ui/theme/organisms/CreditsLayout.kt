@@ -38,7 +38,7 @@ fun CreditsLayout(modifier: Modifier = Modifier, onClick: () -> Unit) {
             .clickable(onClickLabel = context.getString(R.string.go_to_credits),
                 onClick = { onClick.invoke() })
             .semantics(mergeDescendants = true) {
-                contentDescription = context.getString(R.string.go_to_credits)
+                contentDescription = context.getString(R.string.credits_and_copyright_section_desc)
                 backgroundColor = CreditsBackgroundColor
             }, verticalAlignment = Alignment.CenterVertically
     ) {
